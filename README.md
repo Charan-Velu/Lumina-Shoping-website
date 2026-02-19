@@ -5,7 +5,8 @@ This project demonstrates basic front-end development skills including cart func
 
 
  Live Demo
-🔗 https://your-username.github.io/lumina-shopping-website/
+https://charan-velu.github.io/Lumina-Shoping-website/
+
 
 
 Features
