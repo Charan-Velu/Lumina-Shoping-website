@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Orders</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h2>LUMINA</h2>
+<nav>
+<a href="shop.html">Shop</a>
+</nav>
+</header>
+
+<div class="container" id="orders"></div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
+const box = document.getElementById('orders');
+
+if(!orders.length){
+  box.innerHTML='<p>No orders yet</p>';
+}else{
+  orders.forEach(o=>{
+    box.innerHTML+=`
+      <div class="cart-item">
+        <div>
+          <strong>Order #${o.id}</strong>
+          <p>$${o.total}</p>
+        </div>
+        <span>${o.date}</span>
+      </div>
+    `;
+  });
+}
+</script>
+
+</body>
+</html>
