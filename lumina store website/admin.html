@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin | LUMINA</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</head>
+<body>
+
+<header>
+  <h2>Admin Panel</h2>
+  <nav>
+    <a href="shop.html">View Store</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h3>Add Product</h3>
+
+  <input id="name" placeholder="Product Name">
+  <input id="price" type="number" placeholder="Price">
+  <input id="img" placeholder="Image URL">
+  <button onclick="addProduct()">Add Product</button>
+
+  <h3 style="margin-top:40px">All Products</h3>
+  <div id="adminProducts"></div>
+</div>
+
+<script>
+function addProduct(){
+  products.push({
+    id: Date.now(),
+    name: name.value,
+    price: +price.value,
+    img: img.value
+  });
+  saveProducts();
+  renderAdmin();
+}
+
+function deleteProduct(id){
+  products = products.filter(p => p.id !== id);
+  saveProducts();
+  renderAdmin();
+}
+
+function renderAdmin(){
+  const box = document.getElementById('adminProducts');
+  box.innerHTML = '';
+  products.forEach(p=>{
+    box.innerHTML += `
+      <div class="cart-item">
+        <strong>${p.name}</strong>
+        <button onclick="deleteProduct(${p.id})">Delete</button>
+      </div>
+    `;
+  });
+}
+renderAdmin();
+</script>
+
+</body>
+</html>
